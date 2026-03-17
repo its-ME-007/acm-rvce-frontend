@@ -25,7 +25,7 @@ export const TimelineContent = ({
   const isInView = useInView(timelineRef || { current: null }, { once: true, margin: "-100px" });
   
   // @ts-ignore
-  const Component = motion[as as keyof typeof motion] || motion.div;
+  const Component = (motion as any)[as as keyof typeof motion] || motion.div;
 
   return (
     <Component

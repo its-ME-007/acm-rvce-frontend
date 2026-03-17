@@ -352,7 +352,7 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({ items, socialItems }) => 
 
       <div 
         className={cn(
-            "fixed inset-0 z-[100] bg-white dark:bg-[#0a0a0a] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]",
+            "fixed inset-0 z-[100] bg-white dark:bg-[#0a0a0a] transition-transform duration-500 [transition-timing-function:cubic-bezier(0.76,0,0.24,1)]",
             open ? "translate-x-0" : "translate-x-full"
         )}
       >
