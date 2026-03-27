@@ -7,6 +7,7 @@ import { twMerge } from "tailwind-merge";
 import { useTheme } from "next-themes";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import TransitionLink from "./transition-link";
+import { usePathname } from "next/navigation";
 
 // --- Configuration ---
 const headerConfig = {
@@ -394,11 +395,10 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({ items, socialItems }) => 
 
 // --- Main Header Component ---
 export function Header() {
-  const [pathname, setPathname] = useState("/");
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    setPathname(window.location.pathname);
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -443,7 +443,6 @@ export function Header() {
                     <li key={item.href} className="relative">
                       <TransitionLink
                         href={item.href}
-                        onClick={() => setPathname(item.href)}
                         className={cn(
                           "relative z-10 block px-4 py-2 text-xs font-semibold transition-colors duration-200 uppercase tracking-wide",
                           isActive 
